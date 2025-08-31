@@ -1,6 +1,6 @@
-#include "functions.h"
+#include "../include/functions.h"
 #include <iostream>
-#include "constants.h"
+#include "../include/constants.h"
 
 Character::Character(int health, int damage, float power)
   : health(health),
@@ -28,26 +28,17 @@ Enemy::Enemy()
   // normally, variables would go here, but since theres nothing to configure, I just leave it empty
 }
 
-void Character::Attack(AttackType attack)
+int Character::SetDamage(int damage, float power, float randomMultiplier)
 {
-  int attackNumber;
-  switch (attack) {
-    case AttackType::swing:
-      int attackNumber = AttackType::swing;
-    case AttackType::dice:
-      int attackNumber = AttackType::dice;
-    case AttackType::parry:
-      int attackNumber = AttackType::parry;
-    case AttackType::slice:
-      int attackNumber = AttackType::slice;
-    default:
-      int attackNumber = 0;
-  }
+  int totalDamage = (damage * power) * randomMultiplier;
+  this->damage = totalDamage;
+  return totalDamage;
 }
 
 int Character::RemoveHealth(int health)
 {
-  int healthRemoved;
-  int newHealth = health - healthRemoved;
+  int newHealth = this->health - health;
   this->health = newHealth;
+  std::cout << "The new health is: " << newHealth << std::endl;
+  return newHealth;
 }

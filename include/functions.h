@@ -1,23 +1,24 @@
 #pragma once
 #include <iostream>
-#include "constants.h"
+#include "../include/constants.h"
 
 class Character
 {
 public:
     int health;
     float power;
+    float randomMultiplier = 1;
     int damage;
 
     enum AttackType {
-        swing = 1,
-        dice = 2,
-        parry = 3,
-        slice = 4
+        swing,
+        dice,
+        parry,
+        slice
     };
     
     void Attack(AttackType attack);
-    int SetDamage(int weapon, int damage, float power);
+    int SetDamage(int damage, float power, float randomMultiplier);
     int RemoveHealth(int health);
     Character(int health, int damage, float power);
 };
