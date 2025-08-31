@@ -3,6 +3,8 @@
 #include <algorithm>
 #include <random>
 #include <typeinfo>
+#include <chrono>
+#include <thread>
 
 int main() {
     Player player;
@@ -21,9 +23,9 @@ int main() {
     {
         if (playerTurn) 
         {
-            std::cout << "Pick an attack! (Swing: 1, Dice: 2, Parry: 3, Slice: 4): ";
+            std::cout << "Pick an attack! (Swing: 0, Dice: 1, Parry: 2, Slice: 3): ";
             std::cin >> playerInput;
-            if (typeid(playerInput) == typeid(int) && playerInput < 5)
+            if (typeid(playerInput) == typeid(int) && playerInput < 4)
             {
                 std::random_device random;
                 std::mt19937 rng(random());
@@ -32,6 +34,8 @@ int main() {
                 float randomDamageMultiplier = numbers(rng);
                 int nothingHappens = chance(rng);
                 int damage = player.SetDamage(PlayerStats::damage, PlayerStats::power, randomDamageMultiplier);
+                std::cout << "Rendering player attack..." << std::endl;
+                std::this_thread::sleep_for (std::chrono::seconds(3));
                 if (nothingHappens == 1)
                 {
                     std::cout << "You missed! Enemy turn." << std::endl;
@@ -61,6 +65,8 @@ int main() {
             int missedAttack = missChance(rng);
             float randomDamageMultiplier = randomMultiplier(rng);
             int damage = enemy.SetDamage(EnemyStats::damage, EnemyStats::power, randomDamageMultiplier);
+            std::cout << "Rendering enemy attack..." << std::endl;
+            std::this_thread::sleep_for (std::chrono::seconds(3));
             if (missedAttack == 1)
             {
                 std::cout << "You got lucky! The enemy missed. Your turn." << std::endl;
