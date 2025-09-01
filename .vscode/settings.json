@@ -54,6 +54,14 @@
         "xutility": "cpp",
         "array": "cpp",
         "ranges": "cpp",
-        "span": "cpp"
+        "span": "cpp",
+        "chrono": "cpp",
+        "forward_list": "cpp",
+        "iomanip": "cpp",
+        "ratio": "cpp",
+        "sstream": "cpp",
+        "stop_token": "cpp",
+        "string": "cpp",
+        "thread": "cpp"
     }
 }

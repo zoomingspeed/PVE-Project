@@ -39,6 +39,5 @@ int Character::RemoveHealth(int health)
 {
   int newHealth = this->health - health;
   this->health = newHealth;
-  if (newHealth <= 0) {std::cout << "The new health is 0!" << std::endl;} else {std::cout << "The new health is: " << newHealth << std::endl;}
   return newHealth;
 }
